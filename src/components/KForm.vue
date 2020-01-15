@@ -1,13 +1,18 @@
 <template>
   <div class="labela">
       <label>{{ $store.getters.inputValue() }}</label>
-      <input @change="(event) => $store.dispatch('changeInputValue', { inputValue: event.target.value })" type="text" />
+      <input v-model="temporaryValue" @keyup="(event) => $store.dispatch('changeInputValue', { inputValue: temporaryValue })" type="text" />
   </div>
 </template>
 
 <script>
 export default {
     name: "kform",
+    data () {
+        return {
+            temporaryValue: "" 
+        };
+    }
 }
 </script>
 
